@@ -1,0 +1,140 @@
+\documentclass{article}
+\usepackage[margin=0.25in]{geometry}
+\usepackage[utf8]{inputenc}
+
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{amsmath}
+
+\begin{document}
+
+\textbf{4.}
+
+\textbf{(в)}
+
+Разберем первую часть 
+
+$$\exists x (P(x) \wedge (P(x) \thicksim (Q(x) \vee  \overline{P} (x) ))) = True$$
+
+Значит, существует $x_0 \in M$, такое, что при подстановке получается истинное выражение 
+
+$$P(x_0) \wedge (P(x_0) \thicksim (Q(x_0) \vee  \overline{P} (x_0) )) = True$$
+
+Решим это как уравнение. Составим систему:
+
+$$\begin{cases} P(x_0) = True \\ 
+P(x_0) \thicksim (Q(x_0) \vee  \overline{P} (x_0) ) = True  \end{cases} $$
+
+Подставляем первое во второе
+
+$$\begin{cases} P(x_0) = True \\ Q(x_0) \vee  False = True \end{cases} $$
+
+$$\begin{cases} P(x_0) = True \\ Q(x_0) = True \end{cases} $$
+
+Из полученного следует, что существует $x_0$ такое, что
+
+$$P(x_0) \wedge Q(x_0) = True$$
+
+Значит,
+
+$$\exists x (P(x) \wedge Q(x)) = True$$
+
+Что и требовалось доказать
+
+
+\textbf{(г)}
+
+Рассмотрим первую часть 
+
+$$ \forall x (\overline{P} (x) \rightarrow (P(x) \vee \overline{ \overline{Q} (x) \rightarrow P (x) })) = False $$
+
+Преобразуем высказывание
+
+$$ \forall x (P(x) \vee (P(x) \vee \overline{ Q (x) \vee P (x) })) = False $$
+
+$$ \forall x (P(x) \vee ( \overline{ Q } (x) \wedge \overline{P} (x) )) = False $$
+
+Получаем, что существует $x_0 \in M$ такое, что 
+
+$$\begin{cases} P(x_0) = False \\ \overline{ Q } (x_0) \wedge \overline{P} (x_0) = False \end{cases} $$
+
+$$\begin{cases} P(x_0) = False \\  Q  (x_0) = True \end{cases} $$
+
+Значит,
+
+$$ \forall x P(x) = False б \exists x Q(x) = True$$
+
+Что и требовалось доказать
+
+
+\textbf{5}
+
+\textbf{(a)}
+
+Рассмотрим внимательно последнюю часть конньюнкции
+
+$$ \forall x \exists y P(x, y)$$ 
+
+В силу того, что $M$ - конечно, получаем, что $$ \forall x \exists y P(x, y) = False$$
+
+Т.к. если зафиксировать $x_0 = n$, то для этого значения не существует значения $ y$, $x_0 < y$.
+
+Значит, и все высказывание, данное в условии - ложное.
+
+
+\textbf{(б)}
+
+Рассуждения аналогичны пункту 5а. Однако в данном примере множество значений - бесконечное. А значит,
+
+$$ \forall x \exists y P(x, y) = True$$ 
+
+Остальные части конъюнкции доказываются просто. 
+
+Значит, и все высказывание, данное в условии - истинное.
+
+\textbf{(в)}
+
+$$P(y) = "2 делит 3" = False$$
+
+Если подставить $x_0 = 2$, то получим, что $P(x_0) = "2 делит 3" = True$
+
+А значит, $\exists x P(x) = True$. 
+
+Собирая результаты обоих частей импликации получаем, что данное высказывание - ложное. 
+
+\textbf{(г)}
+
+Обе части равносильности - ложные, т.к. 
+
+$$\forall P(x) = \forall x "3 делит x" = False$$
+
+$$\forall Q(x) = \forall x "2 делит x" = False$$
+
+А значит, получаем, что данное исходное высказывание - истинное.
+
+
+\textbf{8} 
+
+\textbf{(a)}
+
+1. Пусть левая части равносильности - истинна. Тогда для любого значения $x = x_0 \in M$ верно,
+
+$$P(x_0) \wedge Q(x_0) = True$$
+
+Из этого следует, что $P, Q$ - тождественные истины на множестве $M$. Получаем, что 
+
+$$\forall x P(x) = True, \forall x Q(x) = True$$
+
+Левая часть высказывания получается также истинной. 
+
+$$(\forall x P(x)) \wedge (\forall x Q(x)) = True$$
+
+2. Пусть левая части равносильности - ложная.
+
+Тогда существует $x_0$ такое, что 
+
+\end{document}
