@@ -1,0 +1,571 @@
+\documentclass{article}
+\usepackage[margin=0.25in]{geometry}
+\usepackage[utf8]{inputenc}
+
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\begin{document}
+
+\textbf{1.}
+
+\textbf{(a)}
+
+Приведем для наглядности диаграммы. 
+
+\begin{multicols}{2}
+[ Левая часть равенства $A \cup (B \cap C)$ ]
+
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+\def\thirdcircle{(1, 2) circle (1.5cm)}
+
+\colorlet{circle edge}{blue!50}
+\colorlet{circle area}{blue!20}
+
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+
+\begin{tikzpicture}
+    \begin{scope}
+        \clip \secondcircle;
+        \fill[filled] \thirdcircle;
+    \end{scope}
+    
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    \draw[outline] \thirdcircle node {$C$};
+    
+    \node[anchor=south] at (current bounding box.north) {$B \cap C$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \begin{scope}
+        \clip \secondcircle;
+        \fill[filled] \thirdcircle;
+    \end{scope}
+    
+    \begin{scope}
+        \fill[filled] \firstcircle;
+    \end{scope}
+    
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    \draw[outline] \thirdcircle node {$C$};
+    
+    \node[anchor=south] at (current bounding box.north) {$A \cup (B \cap C)$};
+\end{tikzpicture}
+
+\end{multicols}
+
+\begin{multicols}{3}
+[ Правая часть равенства $(A \cup B) \cap (A \cup C)$ ]
+
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+\def\thirdcircle{(1, 2) circle (1.5cm)}
+
+\colorlet{circle edge}{blue!50}
+\colorlet{circle area}{blue!20}
+
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+
+\begin{tikzpicture}
+    \begin{scope}
+        \fill[filled] \firstcircle;
+    \end{scope}
+    
+    \begin{scope}
+        \fill[filled] \secondcircle;
+    \end{scope}
+    
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    \draw[outline] \thirdcircle node {$C$};
+    
+    \node[anchor=south] at (current bounding box.north) {$A \cup B$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \begin{scope}
+        \fill[filled] \firstcircle;
+    \end{scope}
+    
+    \begin{scope}
+        \fill[filled] \thirdcircle;
+    \end{scope}
+    
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    \draw[outline] \thirdcircle node {$C$};
+    
+    \node[anchor=south] at (current bounding box.north) {$A \cup C$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \begin{scope}
+        \clip \secondcircle;
+        \fill[filled] \thirdcircle;
+    \end{scope}
+    
+    \begin{scope}
+        \fill[filled] \firstcircle;
+    \end{scope}
+    
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    \draw[outline] \thirdcircle node {$C$};
+    
+    \node[anchor=south] at (current bounding box.north) {$(A \cup B) \cap (A \cup C)$};
+\end{tikzpicture}
+
+\end{multicols}
+
+Докажем тождество, используя формулы логики высказывания и определения множеств. 
+
+\begin{equation} 
+\begin{split}
+A \cup (B \cap C) & = \{x | x \in A \cup (B \cap C) \} \\
+ & = \{x | (x \in A) \vee (x \in (B \cap C)) \} \\
+ & = \{x | (x \in A) \vee ( (x \in B) \wedge (x \in C)) \} \\
+ & = [ use formula: X \vee (Y \wedge Z) = (X \vee Y) \wedge (X \vee Z)]  \\ 
+ & = \{x | ((x \in A) \vee (x \in B)) \wedge ((x \in A) \vee (x \in C)) \} \\
+ & = \{x | ((x \in A) \vee (x \in B)) \wedge ((x \in A) \vee (x \in C)) \} \\
+ & = (A \cup B) \cap (A \cup C) \\
+\end{split}
+\end{equation}
+
+\newpage
+
+\textbf{(б)}
+
+Приведем для наглядности диаграммы. 
+
+\begin{multicols}{2}
+[ Левая часть равенства $A \setminus (B \cup C)$ ]
+
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+\def\thirdcircle{(1, 2) circle (1.5cm)}
+
+\colorlet{circle edge}{blue!50}
+\colorlet{circle area}{blue!20}
+
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+
+\begin{tikzpicture}
+    \begin{scope}
+        \fill[filled] \thirdcircle;
+    \end{scope}
+    
+    \begin{scope}
+        \fill[filled] \secondcircle;
+    \end{scope}
+    
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    \draw[outline] \thirdcircle node {$C$};
+    
+    \node[anchor=south] at (current bounding box.north) {$B \cup C$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \begin{scope}[even odd rule]
+        \clip \thirdcircle (-4,-4) rectangle (4,4);
+        \clip \secondcircle (-4,-4) rectangle (4,4);
+      
+        \fill[filled] \firstcircle;
+    \end{scope}
+    
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    \draw[outline] \thirdcircle node {$C$};
+    
+    \node[anchor=south] at (current bounding box.north) { $A \setminus (B \cup C)$ };
+\end{tikzpicture}
+
+\end{multicols}
+
+\begin{multicols}{3}
+[ Правая часть равенства $(A \setminus B) \cap (A  \setminus C)$ ]
+
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+\def\thirdcircle{(1, 2) circle (1.5cm)}
+
+\colorlet{circle edge}{blue!50}
+\colorlet{circle area}{blue!20}
+
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+
+\begin{tikzpicture}
+    \begin{scope}[even odd rule]
+        \clip \secondcircle (-2,-2) rectangle (4,4);
+      
+        \fill[filled] \firstcircle;
+    \end{scope}
+    
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    \draw[outline] \thirdcircle node {$C$};
+    
+    \node[anchor=south] at (current bounding box.north) {$A \setminus B$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \begin{scope}[even odd rule]
+        \clip \thirdcircle (-2, -2) rectangle (4,4);
+      
+        \fill[filled] \firstcircle;
+    \end{scope}
+    
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    \draw[outline] \thirdcircle node {$C$};
+    
+    \node[anchor=south] at (current bounding box.north) {$A \setminus C$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \begin{scope}[even odd rule]
+        \clip \thirdcircle (-2,-2) rectangle (4,4);
+        \clip \secondcircle (-2,-2) rectangle (4,4);
+      
+        \fill[filled] \firstcircle;
+    \end{scope}
+    
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    \draw[outline] \thirdcircle node {$C$};
+    
+    \node[anchor=south] at (current bounding box.north) { $(A \setminus B) \cap (A  \setminus C)$ };
+\end{tikzpicture}
+
+\end{multicols}
+
+Докажем тождество, используя формулы логики высказывания и определения множеств. 
+
+\begin{equation} 
+\begin{split}
+A \setminus (B \cup C) & = \{x | x \in A \setminus (B \cup C) \} \\
+ & = \{x | (x \in A) \wedge (x \notin (B \cup C)) \} \\
+ & = \{x | (x \in A) \wedge ( (x \notin B) \vee (x \notin C)) \} \\
+ & = [ use formula: X \wedge (Y \vee Z) = (X \wedge Y) \vee (X \wedge Z)]  \\ 
+ & = \{x | ((x \in A) \wedge (x \notin B)) \vee ((x \in A) \wedge (x \notin C)) \} \\
+ & = (A \setminus B) \cap (A \setminus C) \\
+\end{split}
+\end{equation}
+
+
+\newpage
+
+\textbf{2} 
+
+\textbf{(a)}
+
+Необходимо доказать следующее тождество
+$$ (A \cap B) \cup (C \cap D) = (A \cup C) \cap (A \cup D) \cap (B \cup C) \cap (B \cup D)$$
+
+\begin{equation} 
+\begin{split}
+(A \cap B) \cup (C \cap D) & =  \\
+ & = [X \cup (Y \cap Z) = (X \cup Y) \cap (X \cup Z)] \\
+ & = ((A \cap B) \cup C) \cap ((A \cap B) \cup D) \\
+ & = [X \cap (Y \cup Z) = (X \cap Y) \cup (X \cap Z)] \\
+ & = ((A \cup C) \cap (B \cup C)) \cap ((A \cup D) \cap (B \cup D)) \\
+ & = (A \cup C) \cap (B \cup C) \cap (A \cup D) \cap (B \cup D) \\
+\end{split}
+\end{equation}
+
+\textbf{(б)}
+
+Необходимо доказать следующее тождество
+$$ A \oplus B \oplus (A \cap B) = A \cup B$$
+
+\begin{equation} 
+\begin{split}
+A \oplus B \oplus (A \cap B) & =  \\
+ & = [A \oplus B = (A \setminus B) \cup (B \setminus A)] \\
+ & = ((A \setminus B) \cup (B \setminus A)) \oplus (A \cap B) \\
+ & = [X \oplus Y = (X \cup Y) \setminus (X \cap Y)] \\
+ & = ((A \setminus B) \cup (B \setminus A) \cup (A \cap B)) \setminus (((A \setminus B) \cup (B \setminus A)) \cap (A \cap B)) \\
+ & = [(X \setminus Y) \cup (X \cap Y) = X ] \\
+ & = (A \cup (B \setminus A)) \setminus (((A \setminus B) \cup (B \setminus A)) \cap (A \cap B)) \\
+ & = [A \cup (B \setminus A) =  A \cup B] \\
+ & = (A \cup B) \setminus (((A \setminus B) \cup (B \setminus A)) \cap (A \cap B)) \\
+ & = [((A \setminus B) \cup (B \setminus A)) \cap (A \cap B) = \emptyset ] \\
+ & = (A \cup B) \setminus \emptyset \\
+ & = (A \cup B) \\
+\end{split}
+\end{equation}
+
+Для большего понимания и наглядности, приведем диаграммы
+
+\begin{multicols}{2}
+[ Левая часть равенства $A \oplus B \oplus (A \cap B)$ ]
+
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+
+\colorlet{circle edge}{blue!50}
+\colorlet{circle area}{blue!20}
+
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+
+\begin{tikzpicture}
+    \begin{scope}[even odd rule]
+        \clip \secondcircle (-2,-2) rectangle (4,4);
+        \fill[filled] \firstcircle;
+    \end{scope}
+    
+    \begin{scope}[even odd rule]
+        \clip \firstcircle (-2,-2) rectangle (4,4);
+        \fill[filled] \secondcircle;
+    \end{scope}
+    
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    
+    \node[anchor=south] at (current bounding box.north) {$A \oplus B$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \begin{scope}
+        \clip \secondcircle;
+      
+        \fill[filled] \firstcircle;
+    \end{scope}
+    
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    
+    \node[anchor=south] at (current bounding box.north) {$A \cap B$};
+\end{tikzpicture}
+
+\end{multicols}
+
+\newpage
+
+\begin{multicols}{3}
+[  ]
+
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+
+\colorlet{circle edge}{blue!50}
+\colorlet{circle area}{blue!20}
+
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+
+\begin{tikzpicture}
+    \begin{scope}[even odd rule]
+        \fill[filled] \firstcircle;
+        \fill[filled] \secondcircle;
+    \end{scope}
+    
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    
+    \node[anchor=south] at (current bounding box.north) {$(A \oplus B) \cup (A \cap B)$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \begin{scope}
+    \end{scope}
+    
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    
+    \node[anchor=south] at (current bounding box.north) {$(A \oplus B) \cap (A \cap B)$};
+\end{tikzpicture}
+\end{multicols}
+
+\begin{tikzpicture}
+    \def\firstcircle{(0,0) circle (1.5cm)}
+    \def\secondcircle{(0:2cm) circle (1.5cm)}
+    
+    \colorlet{circle edge}{blue!50}
+    \colorlet{circle area}{blue!20}
+    
+    \tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+        outline/.style={draw=circle edge, thick}}
+
+    \begin{scope}
+    \fill[filled] \firstcircle;
+    \fill[filled] \secondcircle;
+    \end{scope}
+    
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    
+    \node[anchor=south] at (current bounding box.north) {$(A \oplus B) \oplus (A \cap B) = ((A \oplus B) \cup (A \cap B) ) \setminus  ((A \oplus B) \cap (A \cap B) )$};
+\end{tikzpicture}
+
+\textbf {3}
+
+\textbf {(a)}
+
+Необходимо доказать следующее утверждение
+
+$$ (A \cup B) \subseteq C \iff (A \subseteq C) \wedge (B \subseteq C) $$
+
+\textbf{Способ 1} 
+
+Докажем с помощью рассуждений
+
+$$(A \cup B) = (A \setminus B) \cup (B \setminus A) \cup (A \cap B)$$
+
+Другими словами, все элементы в $(A \cup B)$ можно разделить на 3 группы : 
+\begin{itemize}
+    \item те, что входят в $A$, но не входят в $B$ ($A \setminus B$)
+    \item те, что входят в $B$, но не входят в $A$ ($B \setminus A$)
+    \item те, что входят в $A$ и в $B$ ($A \cap B$)
+\end{itemize}
+ 
+Элементы из каждой категории лежат в $C$ (по определению понятия подмножества) 
+
+$$A = (A \setminus B ) \cup (A \cap B)$$
+$$B = (B \setminus A ) \cup (A \cap B)$$
+
+А значит, все элементы из $A$ лежат и в $C$. Аналогично, все элементы из $B$ лежат и в $C$
+
+Что и требовалось.
+
+\textbf{Способ 2} 
+
+Введем следующие обозначения: 
+
+$$ (x \in A) = A_0, x \in B = B_0, x \in C = C_0$$
+
+$A_0, B_0, C_0$ - переменные логики высказываний ($True False$). 
+
+Тогда условие переписывается в форме:
+$$((A_0 \vee B_0) \rightarrow C_0) \thicksim ((A_0 \rightarrow C_0) \wedge (B_0 \rightarrow C_0)) $$
+
+\begin{itemize}
+    \item Понятие подмножество ($\subseteq$) заменяется на импликацию ($\rightarrow$)
+    \item Понятие обьединения ($\cup$) заменяется на дизъюнкицию ($\vee$)
+    \item Понятие пересечения ($\cap$) заменяется на конъюнкицию ($\wedge$)
+\end{itemize}
+
+Преобразуем полученное выражение
+$$((A_0 \vee B_0) \rightarrow C_0) \thicksim ((A_0 \rightarrow C_0) \wedge (B_0 \rightarrow C_0)) $$
+
+Левая часть:
+
+$$(A_0 \vee B_0) \rightarrow C_0 = \overline{A_0 \vee B_0} \vee C_0 = (\overline{A_0} \wedge \overline{B_0}) \vee C_0 = (\overline{A_0} \vee C_0) \wedge (\overline{B_0} \vee C_0)$$
+
+Правая часть:
+
+$$(A_0 \rightarrow C_0) \wedge (B_0 \rightarrow C_0) = (\overline{A_0} \vee C_0) \wedge (\overline{B_0} \vee C_0)$$
+
+Получается, что данная в условии равносильность -- тавтология, т.к. левая и правая части одинаковые 
+
+$$((A_0 \vee B_0) \rightarrow C_0) \thicksim ((A_0 \rightarrow C_0) \wedge (B_0 \rightarrow C_0)) = True $$
+
+\textbf{(б)}
+
+Введем следующие обозначения: 
+
+$$ (x \in A) = A_0, x \in B = B_0, x \in C = C_0$$
+
+$A_0, B_0, C_0$ - переменные логики высказываний ($True False$). 
+
+Тогда условие переписывается в форме:
+$$(A_0 \rightarrow (B_0 \wedge C_0)) \thicksim ((A_0 \rightarrow B_0) \wedge (A_0 \rightarrow C_0)) $$
+
+Преобразуем:
+
+Левая часть
+$$A_0 \rightarrow (B_0 \wedge C_0) = \overline{A_0} \vee (B_0 \wedge C_0) = (\overline{A_0} \vee B_0) \wedge (\overline{A_0} \vee C_0) $$
+
+Правая часть
+$$(A_0 \rightarrow B_0) \wedge (A_0 \rightarrow C_0) = (\overline{A_0} \vee B_0) \wedge (\overline{A_0} \vee C_0) $$
+
+Получаем, что данная в условии равносильность -- тавтология, т.к. левая и правая части одинаковые 
+
+\textbf{4}
+
+\textbf{(a)}
+
+Необходимо решить систему уравнений 
+
+$$\begin{cases} A \cap X = B \\ A \cup X = C \\ B \subseteq A \subseteq C \end{cases}$$
+
+\textbf{Способ 1 (сложный, но точный)}
+
+Введем следующие обозначения: 
+
+$$ (x \in A) = A_0, x \in B = B_0, x \in C = C_0, x \in X = X_0$$
+
+Перепишем первое уравнение из системы
+
+$$ A \cap X = B  \iff A \cap X \subseteq B , B \subseteq A \cap X$$
+
+Первую часть можно преобразовать, (используя обозначения) 
+$$A \cap X \subseteq B = X \subseteq (\overline{A} \cup B)$$
+$$[(A_0 \wedge X_0) \rightarrow B_0 = (\overline{A_0} \vee \overline{X_0} \vee B_0) = X_0 \rightarrow (\overline{A_0} \vee B_0 ) ]$$
+
+Вторая часть также преобразуется 
+
+$$  B \subseteq A \cap X$$ 
+
+Значит, $$ B \subseteq A , B \subseteq X$$
+
+Из двух частей получаем ограничения на множество $X$.
+
+$$B \subseteq X \subseteq (\overline{A} \cup B)$$ 
+
+Аналогично разберем второе уравнение из системы
+
+$$ A \cup X = C  \iff A \cup X \subseteq C , C \subseteq A \cup X$$
+
+Первая часть преобразуется в 
+$$A \cup X \subseteq C \iff A \subseteq C, X \subseteq C$$
+
+Вторая часть преобразуется (используя обозначения)
+$$C \subseteq A \cup X = (\overline{A} \cap C) \subseteq X $$
+$$[C_0 \rightarrow (A_0 \vee X_0) = (\overline{C_0} \vee A_0 \vee X_0) = (\overline{A_0} \wedge C_0 ) \rightarrow X_0 ]$$
+
+Из двух частей получаем ограничения на множество $X$.
+
+$$C \cap \overline{A} \subseteq X \subseteq C$$ 
+
+Получаем систему 
+
+$$\begin{cases} B \subseteq X \subseteq (\overline{A} \cup B) \\ C \cap \overline{A} \subseteq X \subseteq C \end{cases}$$
+
+Получаем ответ:
+
+$$ B \cup (C \cap \overline{A}) \subseteq X \subseteq C \cap (\overline{A} \cup B)$$
+
+Однако, учитывая условие $B \subseteq A \subseteq C$, оказывается, что левая и правая части равны, тогда получаем ответ
+
+$$X = (C \setminus A) \cup B$$
+
+\textbf{Общие комментарии}
+
+Все операции над множествами можно заменять на логические операции
+
+Например,
+\begin{itemize}
+    \item Понятие подмножество ($\subseteq$) заменяется на импликацию ($\rightarrow$)
+    \item Понятие обьединения ($\cup$) заменяется на дизъюнкицию ($\vee$)
+    \item Понятие пересечения ($\cap$) заменяется на конъюнкцию ($\wedge$)
+    \item Понятие разности ($A \setminus B$) заменяется на ($A \wedge \overline{B}$)
+\end{itemize}
+
+Можете убедиться в справедливости формул преобразований (в том числе в первых трех номерах). 
+
+\end{document}
