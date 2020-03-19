@@ -13,11 +13,34 @@
 
 \begin{document}
 
+\textbf{Общие комментарии}
+
+Все диаграммы не являются способом доказательства, а лишь использованы для понимания и наглядности. 
+
 \textbf{1.}
 
 \textbf{(a)}
 
-Приведем для наглядности диаграммы. 
+Докажите следующее тождество, используя определение равенства множеств:
+
+$$A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$$
+
+\textbf{Решение:}
+Докажем тождество, используя формулы логики высказывания и определения множеств. 
+
+\begin{equation} 
+\begin{split}
+A \cup (B \cap C) & = \{x | x \in A \cup (B \cap C) \} \\
+ & = \{x | (x \in A) \vee (x \in (B \cap C)) \} \\
+ & = \{x | (x \in A) \vee ( (x \in B) \wedge (x \in C)) \} \\
+ & = [ use formula: X \vee (Y \wedge Z) = (X \vee Y) \wedge (X \vee Z)]  \\ 
+ & = \{x | ((x \in A) \vee (x \in B)) \wedge ((x \in A) \vee (x \in C)) \} \\
+ & = \{x | ((x \in A) \vee (x \in B)) \wedge ((x \in A) \vee (x \in C)) \} \\
+ & = (A \cup B) \cap (A \cup C) \\
+\end{split}
+\end{equation}
+
+Приведем для наглядности диаграммы. Диаграммы не являются способом доказательства, а лишь использованы для понимания и наглядности. 
 
 \begin{multicols}{2}
 [ Левая часть равенства $A \cup (B \cap C)$ ]
@@ -128,23 +151,29 @@
 
 \end{multicols}
 
+\newpage
+
+\textbf{(б)}
+
+Докажите следующее тождество, используя определение равенства множеств:
+
+$$A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)$$
+
+\textbf{Решение:}
+
 Докажем тождество, используя формулы логики высказывания и определения множеств. 
 
 \begin{equation} 
 \begin{split}
-A \cup (B \cap C) & = \{x | x \in A \cup (B \cap C) \} \\
- & = \{x | (x \in A) \vee (x \in (B \cap C)) \} \\
- & = \{x | (x \in A) \vee ( (x \in B) \wedge (x \in C)) \} \\
- & = [ use formula: X \vee (Y \wedge Z) = (X \vee Y) \wedge (X \vee Z)]  \\ 
- & = \{x | ((x \in A) \vee (x \in B)) \wedge ((x \in A) \vee (x \in C)) \} \\
- & = \{x | ((x \in A) \vee (x \in B)) \wedge ((x \in A) \vee (x \in C)) \} \\
- & = (A \cup B) \cap (A \cup C) \\
+A \setminus (B \cup C) & = \{x | x \in A \setminus (B \cup C) \} \\
+ & = \{x | (x \in A) \wedge (x \notin (B \cup C)) \} \\
+ & = \{x | (x \in A) \wedge ( (x \notin B) \vee (x \notin C)) \} \\
+ & = [ use formula: X \wedge (Y \vee Z) = (X \wedge Y) \vee (X \wedge Z)]  \\ 
+ & = \{x | ((x \in A) \wedge (x \notin B)) \vee ((x \in A) \wedge (x \notin C)) \} \\
+ & = (A \setminus B) \cap (A \setminus C) \\
 \end{split}
 \end{equation}
 
-\newpage
-
-\textbf{(б)}
 
 Приведем для наглядности диаграммы. 
 
@@ -252,19 +281,6 @@ A \cup (B \cap C) & = \{x | x \in A \cup (B \cap C) \} \\
 
 \end{multicols}
 
-Докажем тождество, используя формулы логики высказывания и определения множеств. 
-
-\begin{equation} 
-\begin{split}
-A \setminus (B \cup C) & = \{x | x \in A \setminus (B \cup C) \} \\
- & = \{x | (x \in A) \wedge (x \notin (B \cup C)) \} \\
- & = \{x | (x \in A) \wedge ( (x \notin B) \vee (x \notin C)) \} \\
- & = [ use formula: X \wedge (Y \vee Z) = (X \wedge Y) \vee (X \wedge Z)]  \\ 
- & = \{x | ((x \in A) \wedge (x \notin B)) \vee ((x \in A) \wedge (x \notin C)) \} \\
- & = (A \setminus B) \cap (A \setminus C) \\
-\end{split}
-\end{equation}
-
 
 \newpage
 
@@ -272,7 +288,13 @@ A \setminus (B \cup C) & = \{x | x \in A \setminus (B \cup C) \} \\
 
 \textbf{(a)}
 
+Докажите следующее тождества, используя равносильные преобразования:
+
+$$ (A \cap B) \cup (C \cap D) = (A \cup C) \cap (A \cup D) \cap (B \cup C) \cap (B \cup D)$$
+
+\textbf{Решение:}
 Необходимо доказать следующее тождество
+
 $$ (A \cap B) \cup (C \cap D) = (A \cup C) \cap (A \cup D) \cap (B \cup C) \cap (B \cup D)$$
 
 \begin{equation} 
@@ -288,6 +310,11 @@ $$ (A \cap B) \cup (C \cap D) = (A \cup C) \cap (A \cup D) \cap (B \cup C) \cap 
 
 \textbf{(б)}
 
+Докажите следующее тождества, используя равносильные преобразования:
+
+$$ A \oplus B \oplus (A \cap B) = A \cup B$$
+
+\textbf{Решение:}
 Необходимо доказать следующее тождество
 $$ A \oplus B \oplus (A \cap B) = A \cup B$$
 
@@ -416,6 +443,11 @@ A \oplus B \oplus (A \cap B) & =  \\
 
 \textbf {(a)}
 
+Докажите следующие утверждение:
+
+$$ (A \cup B) \subseteq C \iff (A \subseteq C) \wedge (B \subseteq C) $$
+
+\textbf{Решение:}
 Необходимо доказать следующее утверждение
 
 $$ (A \cup B) \subseteq C \iff (A \subseteq C) \wedge (B \subseteq C) $$
@@ -475,6 +507,12 @@ $$(A_0 \rightarrow C_0) \wedge (B_0 \rightarrow C_0) = (\overline{A_0} \vee C_0)
 $$((A_0 \vee B_0) \rightarrow C_0) \thicksim ((A_0 \rightarrow C_0) \wedge (B_0 \rightarrow C_0)) = True $$
 
 \textbf{(б)}
+Докажите следующие утверждение:
+
+$$ A \subseteq (B \cup C) \iff (A \subseteq B) \wedge (A \subseteq C) $$
+
+\textbf{Решение:}
+
 
 Введем следующие обозначения: 
 
@@ -499,6 +537,11 @@ $$(A_0 \rightarrow B_0) \wedge (A_0 \rightarrow C_0) = (\overline{A_0} \vee B_0)
 
 \textbf{(a)}
 
+Решите следующие системы уравнений:
+
+$$\begin{cases} A \cap X = B \\ A \cup X = C \\ B \subseteq A \subseteq C \end{cases}$$
+
+\textbf{Решение:}
 Необходимо решить систему уравнений 
 
 $$\begin{cases} A \cap X = B \\ A \cup X = C \\ B \subseteq A \subseteq C \end{cases}$$
@@ -554,18 +597,5 @@ $$ B \cup (C \cap \overline{A}) \subseteq X \subseteq C \cap (\overline{A} \cup 
 
 $$X = (C \setminus A) \cup B$$
 
-\textbf{Общие комментарии}
-
-Все операции над множествами можно заменять на логические операции
-
-Например,
-\begin{itemize}
-    \item Понятие подмножество ($\subseteq$) заменяется на импликацию ($\rightarrow$)
-    \item Понятие обьединения ($\cup$) заменяется на дизъюнкицию ($\vee$)
-    \item Понятие пересечения ($\cap$) заменяется на конъюнкцию ($\wedge$)
-    \item Понятие разности ($A \setminus B$) заменяется на ($A \wedge \overline{B}$)
-\end{itemize}
-
-Можете убедиться в справедливости формул преобразований (в том числе в первых трех номерах). 
 
 \end{document}
