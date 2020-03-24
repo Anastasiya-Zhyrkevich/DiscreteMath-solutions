@@ -167,9 +167,9 @@ $$A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)$$
 \begin{split}
 A \setminus (B \cup C) & = \{x | x \in A \setminus (B \cup C) \} \\
  & = \{x | (x \in A) \wedge (x \notin (B \cup C)) \} \\
- & = \{x | (x \in A) \wedge ( (x \notin B) \vee (x \notin C)) \} \\
- & = [ use formula: X \wedge (Y \vee Z) = (X \wedge Y) \vee (X \wedge Z)]  \\ 
- & = \{x | ((x \in A) \wedge (x \notin B)) \vee ((x \in A) \wedge (x \notin C)) \} \\
+ & = \{x | (x \in A) \wedge ( (x \notin B) \wedge (x \notin C)) \} \\
+ & = \{x | (x \in A) \wedge (x \in A) \wedge (x \notin B) \wedge (x \notin C) \} \\
+ & = \{x | ((x \in A) \wedge (x \notin B)) \wedge ((x \in A) \wedge (x \notin C)) \} \\
  & = (A \setminus B) \cap (A \setminus C) \\
 \end{split}
 \end{equation}
