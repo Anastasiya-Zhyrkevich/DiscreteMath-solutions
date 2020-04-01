@@ -1,0 +1,324 @@
+\documentclass{article}
+\usepackage[margin=0.25in]{geometry}
+\usepackage[utf8]{inputenc}
+
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\begin{document}
+
+\textbf{Определение}
+
+Пусть X — произвольное множество, тогда множество $2^X = \{Y | Y \subseteq X\}$
+называется булеаном множества $X$.
+
+Примеры:
+
+\begin{itemize}
+    \item $X = \{a, b, c\}$
+    
+    $2^X = \{\emptyset, \{a\}, \{b\}, \{c\}, \{a, b\}, \{a, c\}, \{b, c\}, \{a, b, c\}\}$
+    
+    \item $X = \{\emptyset, \{ \emptyset \}\}$
+    
+    Замечание: $\emptyset \neq \{ \emptyset \}$
+    
+    $2^X = \{ \emptyset, \{\emptyset\}, \{\{ \emptyset \}\}, \{\emptyset, \{  \emptyset \}\}\}$
+    
+\end{itemize}
+
+\textbf{6a}
+
+Докажите, что 
+$$2 ^ {A_1 \cap A_2 \cap ... A_n} = 2 ^ {A_1} \cap 2^{A_2} \cap ... \cap 2^{A_n}$$
+
+\textbf{Решение:}
+
+Воспользуемся методом математической индукции, поэтому можно доказать для двух элементов. 
+
+Пусть у нас есть $2$ множества $A, B$. 
+
+Элементы этих множеств можно разбить на $3$ категории 
+
+\begin{itemize}
+    \item $A \setminus (A \cap B)$
+    \item $B \setminus (A \cap B)$
+    \item $A \cap B$
+\end{itemize}
+
+Тогда, $2^{(A \cap B)}$ -- все подмножества, состоящие только из элементов третьей группы
+
+Аналогичное определение и у величины $2^A \cap 2^B$ -- среди всех подмножетств множества $A$ и множетва $B$ выбраны только те, в которых есть только элементы из третьей группы. 
+
+Значит, 
+$$2^{(A \cap B)} = 2^A \cap 2^B$$
+
+Далее, рассуждения по методу математичсекой индукции
+
+\newpage
+
+\textbf{6б}
+
+Перечислите все элементы множества $2^A$, где $A = \{1, 2, \{\{1\}, 2, 3\}\}$
+
+\textbf{Решение:}
+
+Если ввести обозначение $c = \{\{1\}, 2, 3\}$ 
+
+$$2^X = \{\emptyset, \{1\}, \{2\}, \{c\}, \{1, 2\}, \{1, c\}, \{2, c\}, \{1, 2, c\}\}$$
+
+$$2^X = \{\emptyset, \{1\}, \{2\}, \{  \{\{1\}, 2, 3\} \}, \{1, 2\}, \{1, \{\{1\}, 2, 3\} \}, \{2, \{\{1\}, 2, 3\}\}, \{1, 2, \{\{1\}, 2, 3\}\}\}$$
+
+\newpage
+
+\textbf{Определение}
+
+Пусть $f: X \rightarrow Y$ -- произвольное отображение.
+
+\textbf{Образ}
+
+$A \subseteq X$, $f(A) = \{f(x) | x \in A\}$ -- образ множества $A$ при отображении $f$. 
+
+\textbf{Прообраз}
+
+$B \subseteq X$, $f^{-1}(B) = \{ x \in X | f(x) \in B\}$ -- прообраз множества $A$ при отображении $f$. 
+
+\bigskip
+
+\textbf{7a}
+
+Пусть $f: X \rightarrow Y$ -- произвольное отображение. $A_i \subseteq X, B_i \subseteq Y$, где $i = 1, 2, ... n$
+
+Докажите, следующее свойство образов и прообразов. 
+
+$$f(A_1 \cup A_2 \cup ... \cup A_n) = f(A_1) \cup f(A_2) \cup ... \cup f(A_n)$$
+
+\textbf{Решение:}
+
+Воспользуемся методом математической индукции 
+
+Поэтому доказательство можно провести для двух множеств. 
+
+Доказать, что 
+
+$$f(A \cup B) = f(A) \cup f(B)$$
+
+Чтобы доказать, что два множества равны между собой, докажем, что каждое из них является подмножеством другого множества
+
+\begin{itemize}
+    \item $f(A \cup B) \subseteq f(A) \cup f(B)$
+    
+    Без потери общности, зафиксируем $x \in A$. Тогда, результат отображения лежит в образе $f(x) \in f(A)$
+    
+    Значит,  $f(x) \in f(A \cup B)$, также $f(x) \in f(A) \cup f(B)$.
+    
+    $x$ -- принимает все значения из $(A \cup B)$
+    
+    \item $f(A) \cup f(B) \subseteq  f(A \cup B)$
+    
+    Рассуждения аналогичны. 
+    
+    Без потери общности, зафиксируем $x \in A$. Тогда, результат отображения лежит в образе $f(x) \in f(A)$
+    
+    
+    
+\end{itemize}
+
+\newpage
+
+\textbf{8}
+
+Пусть $U$ -- универсальное множество, $S, T \subseteq U$ -- фиксированные подмножества множества $U$. Определим отображение $f: 2^U \rightarrow 2^U$, как $f(A) = T \cap (S \cup A)$. Найдите $f^{(2)}$. Выясните, чему равно $f^{n}$.
+
+\textbf{Решение:}
+
+Дано
+$$f(A) = T \cap (S \cup A)$$
+
+\begin{equation} 
+\begin{split}
+f^{(2)}(A) &= f(f(A)) \\
+&=  T \cap (S \cup f(A)) \\
+&= T \cap (S \cup  (T \cap (S \cup A))   ) \\
+&= [use: X \cap (Y \cup Z) = (X \cap Y) \cup (X \cap Z) ] \\
+&= (T \cap S) \cup  (T \cap T \cap (S \cup A))   ) \\
+&= (T \cap S) \cup  (T \cap (S \cup A))   ) \\
+&= [use: X \cup (Y \cap Z) = (X \cup Y) \cap (X \cup Z) ] \\
+&= (T \cap S) \cup  (T \cap S) \cup (T \cap A)   \\
+&= (T \cap S) \cup (T \cap A)   \\
+&=  T \cap (S \cup A) \\
+\end{split}
+\end{equation}
+
+Значит,  $f(f(A)) = f(A)$, $f^{(n)}(A) = f(A)$
+
+\newpage
+
+
+\textbf {Определение}
+
+\textbf{Инъективность отображения}
+
+Если $f(x_1) = f(x_2)$, то $x_1 = x_2$
+
+\textbf{Сюръективность отображения}
+
+Если $f(X) = Y$.
+
+Если все элементы из области значения достижимы в отображении.
+
+\textbf{Биективность отображения}
+
+Если отображение и сюръективно, и инъективно одновременно
+
+
+\bigskip
+
+\textbf{9}
+
+Отображения $f, g, h: 2^N \times 2 ^ N \rightarrow 2^N$ заданы следующим образом: $f(A, B) = A \cap B$, $g(A, B) = A \cup B$, $h(A, B) = A \oplus B$.
+
+Выясните, какие из этих отображений являются инъективными, сюръективными и биективными.
+
+Установите, какие из указанных ниже множеств не являются конечными, и перчислите элементы конечных множеств:
+
+\begin{itemize}
+    \item $f^{-1}(\emptyset)$
+    \item $g^{-1}(\emptyset)$
+    \item $h^{-1}(\emptyset)$ 
+    \item $f^{-1}(\{1\})$
+    \item $g^{-1}(\{2\})$
+    \item $h^{-1}(\{3\})$
+    \item $f^{-1}(\{4, 7\})$
+    \item $g^{-1}(\{8, 12\})$
+    \item $h^{-1}(\{5, 9\})$
+\end{itemize}
+
+\textbf{Решение}
+
+\begin{center}
+\begin{tabular}{ c c c c }
+  Функция & Инъективна & Сюрьективна & Биективная \\
+  $f(A, B) = A \cap B$ & - & + & -\\
+  $g(A, B) = A \cup B$ & - & + & -\\
+  $h(A, B) = A \oplus B$ & - & + &- \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ c c }
+  Функция &  \\
+  $f^{-1}(\emptyset)$ &  бесконечно, $(A_1, A_2)$, где $A_1 \cup A_2 = \emptyset$\\
+  $g^{-1}(\emptyset)$ &  $(\emptyset, \emptyset)$ \\
+  $h^{-1}(\emptyset)$ & бесконечно, $(A_1, A_1)$ \\
+  $f^{-1}(\{1\})$ & бесконечно, два множества с общим элементом $1$\\
+  $g^{-1}(\{2\})$ & $(\emptyset, \{2\}), (\{2\}, \emptyset), (\{2\}, \{2\})$ \\
+  $h^{-1}(\{3\})$ & бесконечно, к примеру $(A_1, A_1 \cup \{3\})$ \\
+  $f^{-1}(\{4, 7\})$ &  бесконечно, два множества с общими элементами $\{4, 7\}$\\ 
+  $g^{-1}(\{8, 12\})$ & $(\emptyset, \{8, 12\}), (\{8, 12\}, \emptyset), (\{8\}, \{12\}), (\{12\}, \{8\}) $  \\ 
+  $h^{-1}(\{5, 9\})$ & бесконечно, к примеру $(A_1, A_1 \cup \{5, 9\})$ \\
+\end{tabular}
+\end{center}
+
+\newpage
+
+\textbf{10}
+
+Выясните, для каких значений $n \in N$ отображение $f_n : N \cup {0} \rightarrow N$ является иньективным, сюрьективным, биективным 
+
+$$f_n(k) = \begin{cases} n - k , & \mbox{if } k < n  \\ n + k, & \mbox{if } k \ge n \end{cases}
+$$
+
+\textbf{Решение:}
+
+Давайте посмотрим на значения функции при $n = 1$
+
+$$f_1(k) = \begin{cases} 1 - k , & \mbox{if } k < 1  \\ 1 + k, & \mbox{if } k \ge 1 \end{cases}
+$$
+
+\begin{tikzpicture}
+
+\draw[step=1cm,gray,very thin] (-1.9,-1.9) grid (5.9,5.9);
+\draw[thick,->] (0,0) -- (4.5,0);
+\draw[thick,->] (0,0) -- (0,4.5);
+\filldraw[fill=blue!40!white, draw=black] (0,1) circle (0.1);
+\filldraw[fill=blue!40!white, draw=black] (1,2) circle (0.1);
+\filldraw[fill=blue!40!white, draw=black] (2,3) circle (0.1);
+\filldraw[fill=blue!40!white, draw=black] (3,4) circle (0.1);
+\end{tikzpicture}
+
+\begin{center}
+\begin{tabular}{ c c c c }
+  Функция & Инъективна & Сюрьективна & Биективная \\
+  $f_1(k)$ & + & + & + \\
+\end{tabular}
+\end{center}
+
+
+Давайте посмотрим на значения функции при $n = 2$
+
+$$f_2(k) = \begin{cases} 2 - k , & \mbox{if } k < 2  \\ 2 + k, & \mbox{if } k \ge 2 \end{cases}
+$$
+
+\begin{tikzpicture}
+
+\draw[step=1cm,gray,very thin] (-1.9,-1.9) grid (5.9,5.9);
+\draw[thick,->] (0,0) -- (4.5,0);
+\draw[thick,->] (0,0) -- (0,4.5);
+\filldraw[fill=blue!40!white, draw=black] (0,2) circle (0.1);
+\filldraw[fill=blue!40!white, draw=black] (1,1) circle (0.1);
+\filldraw[fill=blue!40!white, draw=black] (2,4) circle (0.1);
+\filldraw[fill=blue!40!white, draw=black] (3,5) circle (0.1);
+\end{tikzpicture}
+
+\begin{center}
+\begin{tabular}{ c c c c }
+  Функция & Инъективна & Сюрьективна & Биективная \\
+  $f_2(k)$ & + & - & - \\
+\end{tabular}
+\end{center}
+
+
+Давайте посмотрим на значения функции при $n = 3$
+
+$$f_3(k) = \begin{cases} 3 - k , & \mbox{if } k < 3  \\ 3 + k, & \mbox{if } k \ge 3 \end{cases}
+$$
+
+\begin{tikzpicture}
+
+\draw[step=1cm,gray,very thin] (-1.9,-1.9) grid (7.9,10.9);
+\draw[thick,->] (0,0) -- (6.5,0);
+\draw[thick,->] (0,0) -- (0,9.5);
+\filldraw[fill=blue!40!white, draw=black] (0,3) circle (0.1);
+\filldraw[fill=blue!40!white, draw=black] (1,2) circle (0.1);
+\filldraw[fill=blue!40!white, draw=black] (2,1) circle (0.1);
+\filldraw[fill=blue!40!white, draw=black] (3,6) circle (0.1);
+\filldraw[fill=blue!40!white, draw=black] (4,7) circle (0.1);
+\filldraw[fill=blue!40!white, draw=black] (5,8) circle (0.1);
+\end{tikzpicture}
+
+\begin{center}
+\begin{tabular}{ c c c c }
+  Функция & Инъективна & Сюрьективна & Биективная \\
+  $f_3(k)$ & + & - & - \\
+\end{tabular}
+\end{center}
+
+
+Видно, что график состоит из двух частей. Тогда при $n > 1$
+
+\begin{center}
+\begin{tabular}{ c c c c }
+  Функция & Инъективна & Сюрьективна & Биективная \\
+  $f_n(k)$ & + & - & - \\
+\end{tabular}
+\end{center}
+
+
+\end{document}
