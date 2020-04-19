@@ -1,0 +1,310 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2cm,right=10cm,top=2cm,bottom=2cm]{geometry}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\usepackage[shortlabels]{enumitem}
+
+\begin{document}
+
+
+\textbf{УНАРНОЕ ОТНОШЕНИЕ}
+
+Пусть $X$~--- непустое множество. Любое подмножество $R \subseteq X$ называется отношением в множестве $X$ (унарным отношением).
+
+\textit{Пример}. $X = \mathbb{N}$, $R \subseteq X$, $R = \{x \in \mathbb{N}, x\text{~--- чётное число}\}$, $R = \{2, 4, \ldots, 2n, \ldots\}$.
+
+\textbf{БИНАРНОЕ ОТНОШЕНИЕ}
+
+
+Пусть $X$ и $Y$~--- произвольные непустые множества. Произвольное подмножество $R \subseteq X \times Y$ называется \textbf{бинарным отношением}, определённым в паре множеств $X$ и $Y$.
+
+\textit{Пример}. $R \subseteq \mathbb{N} \times \mathbb{N} = \mathbb{N}^2$, $(m, n) \in R \iff n \mid m$. $(6, 3) \in R$, $(6, 4) \notin R$. Тогда $D_R = \mathbb{N}$, $E_R = \mathbb{N}$.
+
+Если $R \subseteq X \times Y$ и $(x, y) \in R$, то пишут $xRy$. 
+
+\begin{itemize}
+    \item \textbf{Областью определения} бинарного отношения $R$ называют множество $$D_R=\{x \in X \mid xRy \text{ для некоторого } y \in Y\}$$.
+    \item \textbf{Областью значений} бинарного отношения $R$ называют множество $$E_R=\{y \in Y \mid xRy \text{ для некоторого } x \in X\}$$.
+\end{itemize}
+
+\textbf{1}
+
+Найдите $D_R, E_R, R^{-1}, R \circ R, R \circ R^{-1}, R^{-1} \circ R$
+
+\begin{itemize}
+    \item (A) $R = \{(x, y): x, y \in \mathbb{N} \& x | y\}$
+    \item (B) $R = \{(x, y): x, y \in \mathbb{R} \& x + y \le 0 \}$
+    
+\end{itemize}
+
+\textbf{Решение}
+
+\begin{itemize}
+    \item (A) $R = \{(x, y): x, y \in \mathbb{N} \& x | y\}$
+    
+    $D_R = \mathbb{N}$
+    
+    $E_R = \mathbb{N}$
+    
+    $R^{-1} = \{(x, y): x, y \in \mathbb{N} \& y | x\}$
+    
+    $R \circ R = \{(x, z):$ найдется такой $y \in \mathbb{N}$, для которого $xRy, yRz \} = \{(x, z):$ найдется $y \in N$, что $x|y, y|z \} = R$, если $y := x$
+    
+    $R \circ R^{-1} = \{(x, z):$ найдется $y \in \mathbb{N}$, что $x|y, z|y \} = \{(x, z) : x \in \mathbb{N}, z \in \mathbb{N}\}$, если взять $y := z \cdot x$
+    
+    $R^{-1} \circ R = \{(x, z):$ найдется $y \in \mathbb{N}$, что $y|x, y|z \} = \{(x, z) : x \in \mathbb{N}, z \in \mathbb{N}\}$, если взять $y := 1$
+    
+    \item (B) $R = \{(x, y): x, y \in \mathbb{R} \& x + y \le 0 \}$
+    
+    $D_R = \mathbb{R}$
+    
+    $E_R = \mathbb{R}$
+    
+    $R^{-1} = \{(x, y): x, y \in \mathbb{R} \& y + x \le 0\}$
+    
+    $R \circ R = \{(x, z):$ найдется такой $y \in \mathbb{R}$, для которого $xRy, yRz \} = \{(x, z):$ найдется $y \in R$, что $x + y \le 0, y + z \le 0\} = \mathbb{R}^2$, если $y := -|x| - |z|$
+    
+    $R \circ R^{-1} = R \circ R$
+    
+    $R^{-1} \circ R = R \circ R$
+    
+    
+\end{itemize}
+
+\line(1, 0){500}
+
+\textbf{Возможные операции}
+
+Пусть $R, R_1, R_2 \subseteq X \times Y$. Тогда:
+\begin{enumerate}
+	\item $R_1 \cup R_2 = \{(x, y) \mid xR_1y \text{ или } xR_2y\}$
+	\item $R_1 \cap R_2 = \{(x, y) \mid xR_1y \text{ и } xR_2y\}$
+	\item $R_1 \setminus R_2 = \{(x, y) \mid xR_1y \text{ и } (x, y) \notin R_2\}$
+	\item $\overline{R}_{X \times Y} = \{(x, y) \mid (x, y) \notin R\} = (X \times Y) \setminus R$
+	\item $R^{-1} = \{(y, x) \mid xRy\}$~--- обратное отношение к $R$
+\end{enumerate}
+
+
+\textbf{2} 
+
+Пусть $R, R_1, R_2$ - бинарные отношения, опрделенные на паре множеств $A, B$, $S, T$ - бинарные отношения, опрделенные на паре множеств $B,C$. Докажите, что
+
+\begin{enumerate}[(a)]
+    \item $(R^{-1})^{-1} = R$
+    \item $\overline{R^{-1}} = (\overline{R})^{-1}$
+    \item $(R_1 \cup R_2)^{-1} = R_1^{-1} \cup R_2^{-1}$
+\end{enumerate}
+
+\textbf{Решение}
+
+\begin{enumerate}[(a)]
+    \item $(R^{-1})^{-1} = R$
+    
+    \textit{Доказательство:}
+     
+    $(R^{-1})^{-1} = (\{ (x, y) \mid x \in A, y \in B, yRx\})^{-1} = \{ (x, y) \mid x \in A, y \in B, xRy\} = R $
+    
+    \item $\overline{R^{-1}} = (\overline{R})^{-1}$
+    
+    \textit{Доказательство:}
+    
+    $\overline{R^{-1}} = B \times A \setminus \{ (y, x) \mid y \in B, x \in A, xRy \} = \{(y, x) \mid (x,y) \notin R \}$
+    
+    $(\overline{R})^{-1} = ( A \times B \setminus \{ (x, y) \mid x \in A, y \in B, xRy\})^{-1} = B \times A \setminus \{ (y, x) \mid y \in B, x \in A, xRy \} =  \{(y, x) \mid (x,y) \notin R \} $
+    
+    \item $(R_1 \cup R_2)^{-1} = R_1^{-1} \cup R_2^{-1}$
+    
+    \textit{Доказательство:}
+    
+    $(R_1 \cup R_2)^{-1} = \{ (x, y) \mid (x,y) \in R_1 \text{или}  (x,y) \in R_2 \} = \{ (y, x) \mid (x,y) \in R_1 \text{или}  (x,y) \in R_2 \} $ 
+    
+    $R_1^{-1} = \{(y, x) \mid (x,y) \in R_1\}$
+    
+    $R_2^{-1} = \{(y, x) \mid (x,y) \in R_2\}$
+    
+    $R_1^{-1} \cup R_2^{-1} = \{ (y, x) \mid (x,y) \in R_1 \text{или}  (x,y) \in R_2 \}$
+    
+\end{enumerate}
+
+\line(1, 0){500}
+
+\textbf{3}
+
+Выясните, для каких бинарных отношений $R$, определенных на паре множеств $A$ и $B$, выполняетс соотношение $R^{-1} = \overline{R}$
+
+\textbf{Решение}
+
+$R^{-1} = \{ (y, x) | y \in B, x \in A, (x, y) \in R \}$
+
+$\overline{R} = \{ (x, y) | (x, y) \notin R\}$
+
+Для равенства множеств нужно, чтобы $A = B$.
+
+ Рассмотрим два случая. 
+ 
+\begin{itemize}
+    \item $(x, x) \in R$. Тогда $(x, x)$ не лежит в $\overline{R}$, но лежит в $R^{-1}$
+    \item $(x, x) \notin R$. Тогда $(x, x)$ лежит в $\overline{R}$, но не лежит в $R^{-1}$
+\end{itemize}
+
+Получили противоречие, значит, таких бинарных отношений не существует.
+
+\line(1, 0){500}
+
+Бинарное отношение $R$ называют:
+	\begin{enumerate}
+		\item \textbf{рефлексивным}, если $\forall a \in A: aRa$
+		\item \textbf{симметричным}, если $\forall a, b \in A: (aRb \Longrightarrow bRa)$
+		\item \textbf{антисимметричным}, если $\forall a, b \in A: (aRb \text{ и } bRa \Longrightarrow a = b)$
+		\item \textbf{транзитивным}, если $\forall a, b, c \in A: (aRb \text{ и } bRc \Longrightarrow aRc)$
+	\end{enumerate}
+
+
+\textbf{4}
+
+Пусть $R \subseteq A^2$ и  $E = \{(a, a) : a\in A$ - диагональ множества $A$. Докажите, что 
+
+\begin{itemize}
+    \item $R$ рефлексивно тогда и только тогда, когда $E \subseteq R$
+    
+\end{itemize}
+
+\textbf{Решение}
+
+$R$ рефлексивно тогда и только тогда, когда $E \subseteq R$
+
+\textit{Доказательство}
+
+По определению.
+
+Отношение называется \textbf{рефлексивным}, если $\forall a \in A: aRa$
+
+Значит, все пары $(a, a)$ должны входить в отношение 
+
+$$\forall a \in A: (a, a) \in R$$
+
+$$E \subseteq R$$
+
+\line(1, 0){500}
+
+Бинарное отношение $R \subseteq A^2$ называется \textbf{отношением эквивалентности} на множестве $A$, если оно рефлексивно, симметрично и транзитивно.
+
+Пусть $R \subseteq A^2$~--- бинарное отношение, и $a \in A$~--- фиксированный элемент. Тогда $[a]_A = \{x \in A \mid xRa \}$~--- смежный класс множества $A$ по эквивалентности $R$ или просто \textbf{класс эквивалентности} множества $A$.
+
+\textbf{6}
+
+
+\begin{itemize}
+\item[(а)]
+$A = \mathbb{Z}$ и $R = \{(a, b) \colon a + b = 0\}$
+
+\item[(б)]
+$A = \mathbb{Z}$ и $R = \{(a, b) \colon a + b \,\,\text{четно}\}$;
+
+\item[(в)]
+$A = \mathbb{Z}$ и $R = \{(a, b) \colon a^2 = b^2\}$;
+
+\item[(г)]
+$A = \mathbb{Z}$ и $R = \{(a, b) \colon a^3 = b^3\}$;
+
+\item[(д)]
+$A = 2^{\{a, b, c, d\}}$ и $R = \{(X, Y) \colon |X| = |Y|\}$;
+
+\item[(е)]
+$A = \mathbb{Z}$ и $R = \{(a, b) \colon \exists k \in \mathbb{Z} \,\, (a - b = 5k)\}$.
+\end{itemize}
+\textbf{Решение}
+
+\begin{itemize}
+\item[(а)]
+$A = \mathbb{Z}$ и $R = \{(a, b) \colon a + b = 0\}$
+
+Нет, не является рефлексивным.
+
+\textbf{рефлексивно}: если $\forall a \in A: aRa$ 
+
+\item[(б)]
+$A = \mathbb{Z}$ и $R = \{(a, b) \colon a + b \,\,\text{четно}\}$;
+
+Нужно показать, что отношение $R$ рефлексивно, симметрично и транзитивно
+
+\begin{itemize}
+		\item \textbf{рефлексивно}: если $\forall a \in \mathbb{Z}: aRa$ 
+		
+		$(a, a) \in R$ тогда и только тогда, $a + a$ - четно. Это правда.
+		
+		\item \textbf{симметрично}: если $\forall a, b \in \mathbb{Z}: (aRb \Longrightarrow bRa)$
+		
+		 Если $(a, b) \in R$, значит, $a + b$ - четно, значит, $b + a$ - четно, значит $(b, a) \in R$.
+		
+		\item \textbf{транзитивно}: если $\forall a, b, c \in \mathbb{Z}: (aRb \text{ и } bRc \Longrightarrow aRc)$
+		
+		Если $(a, b) \in R, (b, c) \in R$, значит, $a + b$ - четно и $b + с$ - четно, значит, $a + c$ - четно значит $(a, c) \in R$.
+		
+		\end{itemize}
+
+
+Классы эквивалентности: 
+
+\begin{itemize}
+\item Все четные числа 
+\item Все нечетные числа
+\end{itemize}
+
+\end{itemize}
+
+
+
+
+\line(1, 0){500}
+
+Бинарное отношение $R \subseteq A^2$ называется \textbf{отношением эквивалентности} на множестве $A$, если оно рефлексивно, симметрично и транзитивно.
+
+Пусть $R \subseteq A^2$~--- бинарное отношение, и $a \in A$~--- фиксированный элемент. Тогда $[a]_A = \{x \in A \mid xRa \}$~--- смежный класс множества $A$ по эквивалентности $R$ или просто \textbf{класс эквивалентности} множества $A$.
+
+
+\textbf{7}
+
+Пусть $A = \{1, 2, 3, 4, 5, 6, 7\}$, $B = \{x, y, z\}$ и $f \colon A \to B$ --
+сюръективная функция вида $f = \{(1, x), (2, z), (3, x), (4, y), (5, z), (6, y), (7, x)\}$.
+Определим бинарное отношение $R$ на множестве $A$ следующим образом: $aRb$ тогда и только тогда $f(a) = f(b)$. Докажите, что $R$ --отношение эквивалентности и найдите классы эквивалентности.
+
+\textbf{Решение}
+
+Нужно показать, что отношение $R$ рефлексивно, симметрично и транзитивно
+
+\begin{itemize}
+		\item \textbf{рефлексивно}: если $\forall a \in A: aRa$ 
+		
+		$(a, a) \in R$ тогда и только тогда, $f(a) = f(a)$. Это правда.
+		
+		\item \textbf{симметрично}: если $\forall a, b \in A: (aRb \Longrightarrow bRa)$
+		
+		 Если $(a, b) \in R$, значит, $f(a) = f(b)$, значит, $f(b) = f(a)$, значит $(b, a) \in R$.
+		
+		\item \textbf{транзитивно}: если $\forall a, b, c \in A: (aRb \text{ и } bRc \Longrightarrow aRc)$
+		
+		Если $(a, b) \in R, (b, c) \in R$, значит, $f(a) = f(b), f(b) = f(c)$, значит, $f(a) = f(c)$, значит $(a, c) \in R$.
+		
+		\end{itemize}
+
+Давайте, найдем $R$. 
+
+Относительно $x$
+$$(1, 3), (1, 7), (3, 7), (3, 1), (7, 1), (7, 3), (1, 1), (3, 3), (7, 7)$$
+
+Относительно $y$
+$$(4, 6), (6, 4), (4, 4), (6, 6)$$
+
+Относительно $z$
+$$(2, 5), (5, 2), (2, 2), (5, 5)$$
+
+\end{document}
