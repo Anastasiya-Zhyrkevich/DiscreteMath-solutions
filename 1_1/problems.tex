@@ -1,0 +1,560 @@
+%% This Beamer template is based on the one found here: https://github.com/sanhacheong/stanford-beamer-presentation, and edited to be used for Stanford ARM Lab
+
+\documentclass[10pt]{beamer}
+%\mode<presentation>{}
+
+\usepackage{media9}
+\usepackage{amssymb,amsmath,amsthm,enumerate}
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage[parfill]{parskip}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{bm}
+\usepackage{amsfonts,amscd}
+\usepackage[]{units}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{tcolorbox}
+\usepackage{physics}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+% Enable colored hyperlinks
+\hypersetup{colorlinks=true}
+
+% The following three lines are for crossmarks & checkmarks
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+% Numbered captions of tables, pictures, etc.
+\setbeamertemplate{caption}[numbered]
+
+%\usepackage[superscript,biblabel]{cite}
+\usepackage{algorithm2e}
+\renewcommand{\thealgocf}{}
+
+% Bibliography settings
+\usepackage[style=ieee]{biblatex}
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+\addbibresource{references.bib}
+
+% Glossary entries
+\usepackage[acronym]{glossaries}
+\newacronym{ML}{ML}{machine learning}
+\newacronym{HRI}{HRI}{human-robot interactions}
+\newacronym{RNN}{RNN}{Recurrent Neural Network}
+\newacronym{LSTM}{LSTM}{Long Short-Term Memory}
+
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\theoremstyle{definition}
+
+\newcommand{\empy}[1]{{\color{darkorange}\emph{#1}}}
+\newcommand{\empr}[1]{{\color{cardinalred}\emph{#1}}}
+\newcommand{\examplebox}[2]{
+\begin{tcolorbox}[colframe=darkcardinal,colback=boxgray,title=#1]
+#2
+\end{tcolorbox}}
+
+\usetheme{Stanford} 
+\input{./style_files_stanford/my_beamer_defs.sty}
+
+
+% commands to relax beamer and subfig conflicts
+% see here: https://tex.stackexchange.com/questions/426088/texlive-pretest-2018-beamer-and-subfig-collide
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
+
+\title[Дискретная математика]{Вводная}
+%\subtitle{Subtitle Of Presentation}
+
+%\beamertemplatenavigationsymbolsempty
+
+\begin{document}
+
+
+\author[BSU]{
+	\begin{tabular}{c} 
+	\Large
+	\\
+    \footnotesize \href{mailto:anastasiya.zhyrkevich@yandex.ru}{anastasiya.zhyrkevich@yandex.ru}
+\end{tabular}
+\vspace{-4ex}}
+
+\institute{
+	\vskip 5pt
+	\vskip 5pt
+	Дискретная математика\\
+	Семинар 1\\
+	\vskip 3pt
+}
+
+\date{09 February, 2020}
+% \date{\today}
+
+\begin{noheadline}
+\begin{frame}\maketitle\end{frame}
+\end{noheadline}
+
+\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{itemize subitem}[circle]
+
+\begin{frame}
+	\frametitle{Краткое содержание} % Table of contents slide, comment this block out to remove it
+	\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+\section{Структура курса}
+\begin{frame}[allowframebreaks]
+\frametitle{Дискретная математика}
+
+\begin{enumerate}
+    \item Курс состоит из 16 семинарских занятий
+    \item Зачет в конце курса
+    \item 2 теста на irunner, 2 контрольные работы 
+    \item Отметка за курс - среднее письменных работ
+\end{enumerate}
+
+\framebreak
+
+\begin{enumerate}
+    \item Семинары в формате разбора задач
+    \item Требования к письменным работам
+    \item Начало курса может показаться простым
+    \item Задавайте вопросы
+
+\end{enumerate}
+
+\framebreak 
+
+Самая полезная ссылка
+
+\href{https://acm.bsu.by/wiki/DM2020}{https://acm.bsu.by/wiki/DM2020}
+
+Все данные, все условия задач.
+
+Полезные ссылки 
+\begin{enumerate}
+    \item \href{https://github.com/Anastasiya-Zhyrkevich/DiscreteMath-solutions}{github} с полными данными семинаров
+    \item \href{https://drive.google.com/drive/folders/1LO6ifRf9qDqoghwRaMIpPo1crvZeAjjn?usp=sharing}{Диск} с данными семинаров
+\end{enumerate}
+
+\framebreak
+
+\end{frame}
+
+
+\section{Знакомство}
+\begin{frame}[allowframebreaks]
+\frametitle{Знакомство}
+
+Жиркевич Анастасия Борисовна 
+
+Телеграм @anastzhyr 
+
++375296601770
+
+Anastasiya.Zhyrkevich@gmail.com
+
+\framebreak 
+
+Игра
+
+\end{frame}
+
+
+\section{Введение в математическую логику}
+\begin{frame}[allowframebreaks]
+\frametitle{Введение в математическую логику}
+
+Материал лекции: 
+\begin{enumerate}
+    \item Понятие простого высказывания True, False
+    \item Логические связки:
+\begin{itemize}
+    \item НЕ  (отрицание) -- $\overline{A}$
+    \item И (конъюнкция) -- $\wedge$ $\cdot$
+    \item ИЛИ (дизъюнкция) -- $\vee$
+    \item СЛЕДУЕТ (импликация) -- $\to$
+\end{itemize}
+\item Таблица истинности формулы
+\end{enumerate}
+
+\end{frame}
+
+\section{Решение задачи 1}
+\begin{frame}[allowframebreaks]
+\frametitle{Решение задачи 1}
+
+Импликация. 
+
+$$ A \to B $$
+
+Таблица истинности 
+
+\begin{center}
+\begin{tabular}{ c c c }
+ A & B & A \to B \\ 
+ 0 & 0 & 1 \\  
+ 0 & 1 & 1 \\ 
+ 1 & 0 & 0 \\ 
+ 1 & 1 & 1 \\
+\end{tabular}
+\end{center}
+
+\framebreak
+
+$$A \to B $$
+
+Аналоги в русском языке: 
+\begin{itemize}
+    \item Если $A$, то $B$
+    \item $B$ в том случае, если $A$
+    \item При $A$ будет $B$
+    \item Из $A$ следует $B$
+    \item В случае $A$ произойдёт $B$
+    \item $B$, так как $A$
+    \item $B$, потому что $A$
+    \item $A$ — достаточное условие для $B$
+    \item $B$ — необходимое условие для $A$
+\end{itemize}
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+1. Для того, чтобы функция была дифференцируема в некоторой точке, необходимо, чтобы она была непрерывна в этой точке
+
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+1. Для того, чтобы функция была дифференцируема в некоторой точке, необходимо, чтобы она была непрерывна в этой точке
+
+\textit{Ответ:} 
+
+Если функция была дифференцируема в некоторой точке, то она непрерывна в этой точке
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+2. Необходимым свойством прямоугольника является равенство его диагоналей. 
+
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+2. Необходимым свойством прямоугольника является равенство его диагоналей. 
+
+\textit{Ответ:} 
+
+Если фигура прямоугольник, то у него равны стороны.
+
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+3. Для делимости многочлена $f(x)$ на линейный двучлен $x - a$ достаточно, чтобы исло $a$ было корнем этого многочлена.
+
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+3. Для делимости многочлена $f(x)$ на линейный двучлен $x - a$ достаточно, чтобы число $a$ было корнем этого ногочлена.
+
+\textit{Ответ:} 
+
+Если число $a$ корень многочлена, то многочлен $f(x)$ делится на линейный двучлен $x - a$
+
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+4. На 5 делятся те целые числа, которые оканчиваются цифрой 0 или цифрой 5
+
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+4. На 5 делятся те целые числа, которые оканчиваются цифрой 0 или цифрой 5
+
+\textit{Ответ:} 
+
+Если число оканчивается на 0 или 5, то число делится на 5.
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+5. Две прямые на плоскости тогда параллельны, когда они перпендикулярны одной и той же прямой.
+
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+5. Две прямые на плоскости тогда параллельны, когда они перпендикулярны одной и той же прямой.
+
+\textit{Ответ:} 
+
+Если две прямые перпендикулярны одной и той же прямой, то они параллельны.
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+6. Комплексные числа равны, только если равны соответсвенно их действительные и мнимые части.
+
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+6. Комплексные числа равны, только если равны соответсвенно их действительные и мнимые части.
+
+\textit{Ответ:} 
+
+Если равны соответсвенно действительные и мнимые части комплексных чисел, то числа равны.
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+7. Всякое квадратное уравнение с действительными коэффициентами имеет не более двух действительных корней.
+
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+7. Всякое квадратное уравнение с действительными коэффициентами имеет не более двух действительных корней.
+
+\textit{Ответ:} 
+
+Если уравнение с действительными коэффииентами, то оно имеет не более двух действительных корней.
+
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+8. Из того, что четырехугольник -- ромб, следует, что каждая ихз его диагоналей служит его осью симметрии.
+
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+8. Из того, что четырехугольник -- ромб, следует, что каждая ихз его диагоналей служит его осью симметрии.
+
+\textit{Ответ:} 
+
+Если четырехугольник -- ромб, то  каждая ихз его диагоналей служит его осью симметрии.
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+9. Четность суммы есть необходимое условие четности каждого слагаемого.
+
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+9. Четность суммы есть необходимое условие четности каждого слагаемого.
+
+\textit{Ответ:} 
+
+Если каждое слагаемое четно, то сумма - четна.
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+10. Равенство треугольников есть достаточное условие их равновеликости.
+
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+10. Равенство треугольников есть достаточное условие их равновеликости.
+
+\textit{Ответ:} 
+
+Если треугольники равны, то они равновелики.
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+11. Для делимости произведения на некоторое число достаточно,  чтобы по меньшей мере один из сомножителей делился на это число.
+
+
+\framebreak 
+
+Задание: 
+
+Выделив условие и заключение теоремы, сформулируйте ее посредством связки "Если ..., то ... "
+
+11. Для делимости произведения на некоторое число достаточно,  чтобы по меньшей мере один из сомножителей делился на это число.
+
+\textit{Ответ:} 
+
+Если хоть один из сомножителей делится на число, то и произведение делится на это же число.
+
+
+\end{frame}
+
+
+\section{Составление таблицы истинности}
+\begin{frame}[allowframebreaks]
+\frametitle{Составление таблицы истинности. Решение задачи 3}
+
+Составим таблицу истинности 
+
+$$(A \to B) \vee (A \to (A \cdot B)) $$
+
+\framebreak 
+
+$$(A \to B) \vee (A \to (A \cdot B)) $$
+
+Нумеруем последовательность операций по приоритету.
+\begin{enumerate}
+    \item $A \to B$
+    \item $A \cdot B$
+    \item $A \to (A \cdot B)$
+    \item $(A \to B) \vee (A \to (A \cdot B)) = \alpha$
+\end{enumerate}
+
+\framebreak
+
+\begin{center}
+\begin{tabular}{ c c c c c c }
+ A & B & (A \to B) & . & . & . \\ 
+ 0 & 0 & 1 & . & . & . \\  
+ 0 & 1 & 1 & . & . & . \\ 
+ 1 & 0 & 0 & . & . & . \\ 
+ 1 & 1 & 1 & . & . & . \\
+\end{tabular}
+\end{center}
+
+\framebreak
+
+\begin{center}
+\begin{tabular}{ c c c c c c }
+ A & B & (A \to B) & A \cdot B & . & . \\ 
+ 0 & 0 & 1 & 0 & . & . \\  
+ 0 & 1 & 1 & 0 & . & . \\ 
+ 1 & 0 & 0 & 0 & . & . \\ 
+ 1 & 1 & 1 & 1 & . & . \\
+\end{tabular}
+\end{center}
+
+\framebreak
+
+\begin{center}
+\begin{tabular}{ c c c c c c }
+ A & B & $(A \to B)$ & $A \cdot B$ & $A \to (A \cdot B)$ & . \\ 
+ 0 & 0 & 1 & 0 & 1 & . \\  
+ 0 & 1 & 1 & 0 & 1 & . \\ 
+ 1 & 0 & 0 & 0 & 0 & . \\ 
+ 1 & 1 & 1 & 1 & 1 & . \\
+\end{tabular}
+\end{center}
+
+\framebreak
+
+$$(A \to B) \vee (A \to (A \cdot B)) = \alpha$$
+
+\begin{center}
+\begin{tabular}{ c c c c c c }
+ A & B & (A \to B) & A \cdot B & A \to (A \cdot B) & \alpha \\ 
+ 0 & 0 & 1 & 0 & 1 & 1 \\  
+ 0 & 1 & 1 & 0 & 1 & 1 \\ 
+ 1 & 0 & 0 & 0 & 0 & 0 \\ 
+ 1 & 1 & 1 & 1 & 1 & 1 \\
+\end{tabular}
+\end{center}
+\end{frame}
+
+\section{Составление таблицы истинности}
+\begin{frame}[allowframebreaks]
+\frametitle{Решение задачи 3}
+
+\begin{itemize}
+    \item $((A \thicksim B) \to \overline{C}) \cdot (A \vee C)$.
+
+\item $(((\overline{A \vee B}) \cdot \overline{C}) \to \overline{B}) \thicksim A$.
+
+\item $((\overline{A} \cdot \overline{B}) \to (\overline{\overline{B} \to \overline{A}}))
+\cdot ((A \vee B) \thicksim C)$.
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}
