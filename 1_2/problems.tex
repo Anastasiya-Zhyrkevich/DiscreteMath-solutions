@@ -1,0 +1,511 @@
+%% This Beamer template is based on the one found here: https://github.com/sanhacheong/stanford-beamer-presentation, and edited to be used for Stanford ARM Lab
+
+\documentclass[10pt]{beamer}
+%\mode<presentation>{}
+
+\usepackage{media9}
+\usepackage{amssymb,amsmath,amsthm,enumerate}
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage[parfill]{parskip}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{bm}
+\usepackage{amsfonts,amscd}
+\usepackage[]{units}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{tcolorbox}
+\usepackage{physics}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+% Enable colored hyperlinks
+\hypersetup{colorlinks=true}
+
+% The following three lines are for crossmarks & checkmarks
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+% Numbered captions of tables, pictures, etc.
+\setbeamertemplate{caption}[numbered]
+
+%\usepackage[superscript,biblabel]{cite}
+\usepackage{algorithm2e}
+\renewcommand{\thealgocf}{}
+
+% Bibliography settings
+\usepackage[style=ieee]{biblatex}
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+\addbibresource{references.bib}
+
+% Glossary entries
+\usepackage[acronym]{glossaries}
+\newacronym{ML}{ML}{machine learning}
+\newacronym{HRI}{HRI}{human-robot interactions}
+\newacronym{RNN}{RNN}{Recurrent Neural Network}
+\newacronym{LSTM}{LSTM}{Long Short-Term Memory}
+
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\theoremstyle{definition}
+
+\newcommand{\empy}[1]{{\color{darkorange}\emph{#1}}}
+\newcommand{\empr}[1]{{\color{cardinalred}\emph{#1}}}
+\newcommand{\examplebox}[2]{
+\begin{tcolorbox}[colframe=darkcardinal,colback=boxgray,title=#1]
+#2
+\end{tcolorbox}}
+
+\usetheme{Stanford} 
+\input{./style_files_stanford/my_beamer_defs.sty}
+
+
+% commands to relax beamer and subfig conflicts
+% see here: https://tex.stackexchange.com/questions/426088/texlive-pretest-2018-beamer-and-subfig-collide
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
+
+\title[Дискретная математика]{Логические операции над высказываниями}
+%\subtitle{Subtitle Of Presentation}
+
+%\beamertemplatenavigationsymbolsempty
+
+\begin{document}
+
+
+\author[BSU]{
+	\begin{tabular}{c} 
+	\Large
+	\\
+    \footnotesize \href{mailto:anastasiya.zhyrkevich@yandex.ru}{anastasiya.zhyrkevich@yandex.ru}
+\end{tabular}
+\vspace{-4ex}}
+
+\institute{
+	\vskip 5pt
+	\vskip 5pt
+	Дискретная математика\\
+	Семинар 2\\
+	\vskip 3pt
+}
+
+\date{15 February, 2020}
+% \date{\today}
+
+\begin{noheadline}
+\begin{frame}\maketitle\end{frame}
+\end{noheadline}
+
+\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{itemize subitem}[circle]
+
+\begin{frame}
+	\frametitle{Краткое содержание} % Table of contents slide, comment this block out to remove it
+	\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+\section{Проверка домашнего задания}
+\begin{frame}[allowframebreaks]
+\frametitle{Домашнего задание}
+
+TBD
+
+\end{frame}
+
+
+\section{Решение уравнений}
+\begin{frame}[allowframebreaks]
+\frametitle{Задание 4 (а)}
+
+Задание: 
+
+Решите следующее логическое уравнение: 
+
+$$ (A \to C) \cdot \overline{((B \to C) \to ((A \vee B) \to C))} = True $$
+
+\framebreak 
+
+Задание: 
+
+Решите следующее логическое уравнение: 
+
+$$ (A \to C) \cdot \overline{((B \to C) \to ((A \vee B) \to C))} = True $$
+
+Решение: 
+
+Составим систему
+
+\begin{cases} 
+A \to C = T \\ 
+\overline{((B \to C) \to ((A \vee B) \to C))} = T 
+\end{cases} 
+
+\framebreak 
+
+\begin{cases} 
+A \to C = T \\ 
+\overline{((B \to C) \to ((A \vee B) \to C))} = T 
+\end{cases} 
+
+Первое - неинфомативное 
+
+Второе - работаем
+
+$$\overline{((B \to C) \to ((A \vee B) \to C))} = T $$
+
+\framebreak 
+
+$$(B \to C) \to ((A \vee B) \to C) = F$$
+
+Единственный случай: 
+
+Система : 
+
+\begin{cases} 
+B \to C = T \\
+(A \vee B) \to C = F
+\end{cases} 
+
+\framebreak 
+
+\begin{cases} 
+B \to C = T \\
+(A \vee B) \to C = F
+\end{cases} 
+
+\begin{cases} 
+B \to C = T \\
+A \vee B = T \\ 
+C = F
+\end{cases} 
+
+\framebreak 
+
+\begin{cases} 
+B \to C = T \\
+A \vee B = T \\ 
+C = F
+\end{cases} 
+
+\begin{cases} 
+B = F \\
+A \vee B = T \\ 
+C = F
+\end{cases} 
+
+\begin{cases} 
+B = F \\
+A = T \\ 
+C = F
+\end{cases}
+
+\framebreak 
+
+\begin{cases} 
+B = F \\
+A = T \\ 
+C = F
+\end{cases}
+
+Возвращаемся к $A \to C = T$
+
+Оно неверное. 
+
+Ответ: Решений нет. 
+
+\framebreak
+
+Резюме решения: 
+
+\begin{cases} 
+A \to C = T \\ 
+\overline{((B \to C) \to ((A \vee B) \to C))} = T 
+\end{cases} 
+
+\begin{cases} 
+A \to C = T \\ 
+(B \to C) \to ((A \vee B) \to C) = F 
+\end{cases} 
+
+\begin{cases} 
+A \to C = T \\ 
+B \to C = T \\
+(A \vee B) \to C = F
+\end{cases} 
+
+\begin{cases} 
+A \to C = T \\ 
+B \to C = T \\
+A \vee B = T \\
+C = F
+\end{cases} 
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+\frametitle{Задание 4 (б)}
+
+Задание: 
+
+Решите следующее логическое уравнение: 
+
+$$ ((A \cdot B) \sim C) \to (C \vee \overline{A}) = False  $$
+
+\framebreak 
+
+Задание: 
+
+Решите следующее логическое уравнение: 
+
+$$ ((A \cdot B) \sim C) \to (C \vee \overline{A}) = False  $$
+
+Решение: 
+
+\begin{cases} 
+((A \cdot B) \sim C) = T \\ 
+C \vee \overline{A} = F \\
+\end{cases} 
+
+\framebreak
+
+\begin{cases} 
+((A \cdot B) \sim C) = T \\ 
+C \vee \overline{A} = F \\
+\end{cases} 
+
+
+\begin{cases} 
+((A \cdot B) \sim C) = T \\ 
+C = F \\ 
+\overline{A} = F \\
+\end{cases} 
+
+\begin{cases} 
+((A \cdot B) \sim C) = T \\ 
+C = F \\ 
+A = T \\
+\end{cases}
+
+\framebreak 
+
+\begin{cases} 
+A \cdot B = F\\ 
+C = F \\ 
+A = T \\
+\end{cases}
+
+\begin{cases} 
+B = F\\ 
+C = F \\ 
+A = T \\
+\end{cases}
+
+\framebreak 
+
+Ответ: 
+
+\begin{cases} 
+B = F\\ 
+C = F \\ 
+A = T \\
+\end{cases}
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+\frametitle{Задание 4 (г)}
+
+Задание: 
+
+Решите следующее логическое уравнение: 
+
+$$ (\overline{(A \sim B)} \cdot \overline{(A \sim C)}) \to \overline{(A \sim (B \cdot D))}  = False $$
+
+\framebreak 
+
+Задание: 
+
+Решите следующее логическое уравнение: 
+
+$$ (\overline{(A \sim B)} \cdot \overline{(A \sim C)}) \to \overline{(A \sim (B \cdot D))}  = False $$
+
+Решение: 
+
+\begin{cases} 
+(\overline{(A \sim B)} \cdot \overline{(A \sim C)}) = T\\ 
+\overline{(A \sim (B \cdot D))} = F\\ 
+\end{cases}
+
+\framebreak
+
+\begin{cases} 
+(\overline{(A \sim B)} \cdot \overline{(A \sim C)}) = T\\ 
+\overline{(A \sim (B \cdot D))} = F\\ 
+\end{cases}
+
+\begin{cases} 
+\overline{(A \sim B)} = T \\ 
+\overline{(A \sim C)}  = T \\ 
+A \sim (B \cdot D) = T\\ 
+\end{cases}
+
+\framebreak
+
+\begin{cases} 
+\overline{(A \sim B)} = T \\ 
+\overline{(A \sim C)} = T \\ 
+A \sim (B \cdot D) = T\\ 
+\end{cases}
+
+\begin{cases} 
+A \sim B = F \\ 
+A \sim C = F \\ 
+A \sim (B \cdot D) = T\\ 
+\end{cases}
+
+\framebreak
+
+\begin{cases} 
+A \sim B = F \\ 
+A \sim C = F \\ 
+A \sim (B \cdot D) = T\\ 
+\end{cases}
+
+Рассмотрим 2 случая 
+
+Пусть $A = T$, Тогда 
+
+\begin{cases} 
+A = T \\
+B = F \\ 
+C = F \\ 
+B \cdot D = T\\ 
+\end{cases}
+
+Противоречие
+
+\framebreak
+
+\begin{cases} 
+A \sim B = F \\ 
+A \sim C = F \\ 
+A \sim (B \cdot D) = T\\ 
+\end{cases}
+
+Рассмотрим второй случай
+
+Пусть $A = F$, Тогда 
+
+\begin{cases} 
+A = F \\
+B = T \\ 
+C = T \\ 
+B \cdot D = T\\ 
+\end{cases}
+
+\begin{cases} 
+A = F \\
+B = T \\ 
+C = T \\ 
+D = F\\ 
+\end{cases}
+
+
+\end{frame}
+
+
+\section{Полезные преобразования}
+\begin{frame}[allowframebreaks]
+\frametitle{Преобразования}
+
+Преобразования: 
+\begin{enumerate}
+    \item $A \to B = \overline{A} \vee B$
+    \item $A \cdot (B \vee C) = (A \cdot B) \vee (A \cdot C)$
+    
+    \item $\overline{A} \vee (A \cdot B) = \overline{A} \vee B$
+\end{enumerate}
+
+\end{frame}
+
+\section{Доказательство равносильностей}
+\begin{frame}[allowframebreaks]
+\frametitle{Разминка}
+
+Доказать $$\overline{A} \vee (A \cdot B) = \overline{A} \vee B$$
+
+\end{frame}
+
+
+\section{Доказательство равносильностей}
+\begin{frame}[allowframebreaks]
+\frametitle{Задание 5 (а)}
+
+Задание: 
+
+Докажите следующую равносильность без использования таблиц истинности: 
+
+$$ (A \cdot (B \vee \overline{C})) \vee \overline{A} \vee (B \cdot C) \vee (A \cdot \overline{C}) \equiv \overline{A} \vee B \vee \overline{C} $$
+
+\framebreak
+
+Задание: 
+
+Докажите следующую равносильность без использования таблиц истинности: 
+
+$$ (A \cdot (B \vee \overline{C})) \vee \overline{A} \vee (B \cdot C) \vee (A \cdot \overline{C}) \equiv \overline{A} \vee B \vee \overline{C} $$
+
+Решение: 
+
+Преобразуем левую часть
+
+$$(A \cdot (B \vee \overline{C})) \vee \overline{A} \vee (B \cdot C) \vee (A \cdot \overline{C}) $$
+
+\framebreak
+
+$$(A \cdot (B \vee \overline{C})) \vee \overline{A} \vee (B \cdot C) \vee (A \cdot \overline{C}) \equiv $$
+
+$$[ \boldsymbol{FORMULA:}  A \cdot (B \vee C) = (A \cdot B) \vee (A \cdot C) ] $$
+
+
+$$(A \cdot B) \vee (A \cdot \overline{C}) \vee \overline{A} \vee (B \cdot C) \vee (A \cdot \overline{C}) \equiv $$
+
+\framebreak
+
+$$(A \cdot B) \vee (A \cdot \overline{C}) \vee \overline{A} \vee (B \cdot C) \vee (A \cdot \overline{C}) \equiv $$
+
+(Одинаковые конъюнкции)
+
+$$(A \cdot B) \vee (A \cdot \overline{C}) \vee \overline{A} \vee (B \cdot C) \equiv $$
+
+\framebreak
+
+$$(A \cdot B) \vee \boldsymbol{(A \cdot \overline{C}) \vee \overline{A}} \vee (B \cdot C) \equiv $$
+
+$$[ \boldsymbol{FORMULA:}  \overline{A} \vee (A \cdot B) = \overline{A} \vee B ]$$
+
+$$(A \cdot B) \vee \boldsymbol{\overline{C} \vee \overline{A}} \vee (B \cdot C) \equiv $$
+
+\framebreak 
+
+$$\boldsymbol{(A \cdot B)} \vee \overline{C} \vee \boldsymbol{\overline{A}} \vee (B \cdot C) \equiv $$
+
+$$[ \boldsymbol{FORMULA:} \overline{A} \vee (A \cdot B) = \overline{A} \vee B ]$$
+
+$$B \vee \overline{C} \vee \overline{A} \vee (B \cdot C) \equiv $$
+
+
+$$B \vee \overline{C} \vee \overline{A} \vee B \equiv $$
+
+$$B \vee \overline{C} \vee \overline{A} $$
+
+\end{frame}
+
+
+\end{document}
