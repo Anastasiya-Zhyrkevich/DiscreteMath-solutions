@@ -113,9 +113,45 @@
 
 \section{Проверка домашнего задания}
 \begin{frame}[allowframebreaks]
-\frametitle{Домашнего задание}
+\frametitle{Домашнее задание}
 
-TBD
+Построить таблицу истинности 3б
+
+$$ ((A \sim B) \to \overline{C}) \cdot (A \vee C) = \alpha $$
+
+
+\begin{center}
+\begin{tabular}{ c c c c c c c c}
+ A & B & С & (A \sim B) & \overline{C} & ((A \sim B) \to \overline{C}) & (A \vee C) & \alpha \\ 
+ 0 & 0 & 0 & . & . & . & . & . \\  
+ 0 & 0 & 1 & . & . & . & . & . \\ 
+ 0 & 1 & 0 & . & . & . & . & .  \\ 
+ 0 & 1 & 1 & . & . & . & . & .  \\
+ 1 & 0 & 0 & . & . & . & . & .  \\  
+ 1 & 0 & 1 & . & . & . & . & . \\ 
+ 1 & 1 & 0 & . & . & . & . & . \\
+ 1 & 1 & 1 & . & . & . & . & . \\
+\end{tabular}
+\end{center}
+
+\framebreak 
+
+Ответ: 
+
+\begin{center}
+\begin{tabular}{ c c c c c c c c}
+ A & B & С & (A \sim B) & \overline{C} & ((A \sim B) \to \overline{C}) & (A \vee C) & \alpha \\ 
+ 0 & 0 & 0 & 1 & 1 & 1 & 0 & 0 \\  
+ 0 & 0 & 1 & 1 & 0 & 0 & 1 & 0  \\ 
+ 0 & 1 & 0 & 0 & 1 & 1 & 0 & 0  \\ 
+ 0 & 1 & 1 & 0 & 0 & 1 & 1 & 1  \\
+ 1 & 0 & 0 & 0 & 1 & 1 & 1 & 1  \\  
+ 1 & 0 & 1 & 0 & 0 & 1 & 1 & 1 \\ 
+ 1 & 1 & 0 & 1 & 1 & 1 & 1 & 1 \\ 
+ 1 & 1 & 1 & 1 & 0 & 0 & 1 & 0 \\
+\end{tabular}
+\end{center}
+
 
 \end{frame}
 
@@ -246,6 +282,16 @@ B \to C = T \\
 A \vee B = T \\
 C = F
 \end{cases} 
+
+
+\framebreak 
+
+
+\begin{itemize}
+    \item Решений могут быть все
+    \item Несколько решений
+    \item Нет решений.
+\end{itemize}
 \end{frame}
 
 \begin{frame}[allowframebreaks]
@@ -419,12 +465,41 @@ D = F\\
 
 \end{frame}
 
-
 \section{Полезные преобразования}
 \begin{frame}[allowframebreaks]
 \frametitle{Преобразования}
 
-Преобразования: 
+Логически эквивалентные формулы $A$ и $B$.
+
+Если они являются следствием друг друга
+
+$A = B$
+
+Неформально: 
+
+- Последние столбцы соответвующих таблиц истинности совпадают (Формулы имеют одинаковые значения при любой интерпретации)
+
+Интерпретация - подстановка значений, к примеру $(True, True), (True, False), ...$
+
+
+\framebreak
+
+Стандартные преобразования: 
+\begin{enumerate}
+    \item $A \vee A = A$, $A \cdot A = A$ идемпотентность
+    \item $A \vee B = B \vee A$, $A \cdot B = B \cdot A$ коммутативность
+    \item $A \vee (B \vee C) = (A \vee B) \vee C$, $A \cdot (B \cdot C) = (A \cdot B) \cdot C$ Ассоциативность
+    \item $\overline{\overline{A}} = A$
+    
+    \item $A \cdot (B \vee C) = (A \cdot B) \vee (A \cdot C)$ Дистрибутивность
+    \item $(A \vee B) \cdot A = A$ поглощение
+    \item $(A \cdot B) \vee A = A$ поглощение
+
+\end{enumerate}
+
+\framebreak
+
+Преобразования для 5а: 
 \begin{enumerate}
     \item $A \to B = \overline{A} \vee B$
     \item $A \cdot (B \vee C) = (A \cdot B) \vee (A \cdot C)$
@@ -439,6 +514,18 @@ D = F\\
 \frametitle{Разминка}
 
 Доказать $$\overline{A} \vee (A \cdot B) = \overline{A} \vee B$$
+
+\framebreak
+
+Доказать $$\overline{A} \vee (A \cdot B) = \overline{A} \vee B$$
+
+
+Решение:
+
+ $$\overline{A} \vee (A \cdot B) = (\overline{A} \vee A) \cdot (\overline{A} \vee B) = $$
+ 
+$$= [\boldsymbol{FORMULA} : A \vee \overline{A} = True] = T \cdot (\overline{A} \vee B) = \overline{A} \vee B $$
+ 
 
 \end{frame}
 
@@ -504,6 +591,19 @@ $$B \vee \overline{C} \vee \overline{A} \vee (B \cdot C) \equiv $$
 $$B \vee \overline{C} \vee \overline{A} \vee B \equiv $$
 
 $$B \vee \overline{C} \vee \overline{A} $$
+
+\end{frame}
+
+
+\section{Домашнее задание}
+\begin{frame}[allowframebreaks]
+\frametitle{Домашнее задание}
+
+Домашнее задание: 
+
+4B - уравнение (преобразование) 
+
+5B - преобразования
 
 \end{frame}
 
